@@ -289,147 +289,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/27/nn/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Mr.shen">
-      <meta itemprop="description" content="等一场秋风再起，花开如绎">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AD.钙奶">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/27/nn/" class="post-title-link" itemprop="url">nn</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-27 21:33:53" itemprop="dateCreated datePublished" datetime="2021-03-27T21:33:53+08:00">2021-03-27</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/27/E%E9%A2%98%E9%A2%98%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Mr.shen">
-      <meta itemprop="description" content="等一场秋风再起，花开如绎">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AD.钙奶">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/27/E%E9%A2%98%E9%A2%98%E8%A7%A3/" class="post-title-link" itemprop="url">E题题解</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-27 21:33:53 / 修改时间：21:36:39" itemprop="dateCreated datePublished" datetime="2021-03-27T21:33:53+08:00">2021-03-27</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="E题题解"><a href="#E题题解" class="headerlink" title="E题题解"></a>E题题解</h1><p> 发表于 2021-01-20</p>
-<h1 id="E-Satellites"><a href="#E-Satellites" class="headerlink" title="E - Satellites"></a>E - Satellites</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>The radius of earth is 6440 Kilometer. There are many Satellites and Asteroids moving around the earth. If two Satellites create an angle with the center of earth, can you find out the distance between them? By distance we mean both the arc and chord distances. Both satellites are on the same orbit (However, please consider that they are revolving on a circular path rather than an elliptical path).</p>
-<p>Input The input file will contain one or more test cases. Each test case consists of one line containing two-integer s and a, and a string ‘min’ or ‘deg’. Here s is the distance of the satellite from the surface of the earth and a is the angle that the satellites make with the center of earth. It may be in minutes (′ ) or in degrees (◦ ). Remember that the same line will never contain minute and degree at a time.</p>
-<p>Output For each test case, print one line containing the required distances i.e. both arc distance and chord distance respectively between two satellites in Kilometer. The distance will be a floating-point value with six digits after decimal point.</p>
-<p>Sample Input</p>
-<p>500 30 deg</p>
-<p>700 60 min</p>
-<p>200 45 deg</p>
-<p>Sample Output</p>
-<p>3633.775503 3592.408346</p>
-<p>124.616509 124.614927</p>
-<p>5215.043805 5082.035982</p>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>角度单位是分(′ )和度(◦ )，1°=60′。设圆心角angle[0，180°]。则圆弧距离distance1=(2 * PI * r * angle)/360;直线距离distance2=r * sin((angle*PI)/2 * 180) * 2;</p>
-<p>如果以分为单位，将上式的angle替换成angle/60即可；</p>
-<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;iomanip&gt;</span><br><span class="line">#include &lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const double r&#x3D;6440;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    double a1,a2;</span><br><span class="line">    char s[10];</span><br><span class="line">    while(cin&gt;&gt;a1&gt;&gt;a2&gt;&gt;s)</span><br><span class="line">    &#123;</span><br><span class="line">        if(s[0]&#x3D;&#x3D;&#39;m&#39;)&#x2F;&#x2F;判断输入度数的单位</span><br><span class="line">            a2&#x3D;a2&#x2F;60;&#x2F;&#x2F;分转度</span><br><span class="line">        double angle&#x3D;M_PI*a2&#x2F;180;&#x2F;&#x2F;转换为弧度制</span><br><span class="line">        double arc&#x3D;angle*(a1+r);&#x2F;&#x2F;计算弧长</span><br><span class="line">        double dis&#x3D;2*(a1+r)*sin(angle&#x2F;2);&#x2F;&#x2F;计算两点直线距离</span><br><span class="line">        if(a2&gt;180)</span><br><span class="line">            arc&#x3D;2*M_PI*(a1+r)-arc;&#x2F;&#x2F;角度大于180的情况</span><br><span class="line">        cout&lt;&lt;setprecision(6)&lt;&lt;setiosflags(ios::fixed)&lt;&lt;arc&lt;&lt;&quot; &quot;&lt;&lt;dis&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/27/ICPC%E8%AE%AD%E7%BB%83%E8%81%94%E7%9B%9F2021%E5%AF%92%E5%81%87%E5%86%AC%E4%BB%A4%E8%90%A5%EF%BC%885%EF%BC%89H-%E6%8E%92%E5%90%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -574,6 +433,147 @@
 <h3 id="迭代器iterator"><a href="#迭代器iterator" class="headerlink" title="迭代器iterator"></a>迭代器iterator</h3><p><strong>1.</strong> <strong>迭代器(iterator)是一中检查容器内元素并遍历元素的数据类型。</strong></p>
 <p>Iterator（迭代器）模式又称Cursor（游标）模式，用于提供一种方法顺序访问一个聚合对象中各个元素, 而又不需暴露该对象的内部表示。或者这样说可能更容易理解：Iterator模式是运用于聚合对象的一种模式，通过运用该模式，使得我们可以在不知道对象内部表示的情况下，按照一定顺序（由iterator提供的方法）访问聚合对象中的各个元素。</p>
 <h2 id="2-代码"><a href="#2-代码" class="headerlink" title="2.代码"></a>2.代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;set&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    set&lt;int&gt;s;</span><br><span class="line">    set&lt;int&gt;::iterator t;&#x2F;&#x2F;创建一个迭代器t</span><br><span class="line">    int temp;</span><br><span class="line">    cin&gt;&gt;temp;</span><br><span class="line">    while(temp!&#x3D;-1)</span><br><span class="line">    &#123;</span><br><span class="line">        s.clear();</span><br><span class="line">        while(temp!&#x3D;0)</span><br><span class="line">        &#123;</span><br><span class="line">            s.insert(temp);</span><br><span class="line">            cin&gt;&gt;temp;</span><br><span class="line">        &#125;</span><br><span class="line">        int c&#x3D;0;</span><br><span class="line">        for(t&#x3D;s.begin();t!&#x3D;s.end();t++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(s.count((*t)*2)!&#x3D;0)&#x2F;&#x2F;返回集合中等于（*t*2）的元素个数。</span><br><span class="line">                c++;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;c&lt;&lt;endl;</span><br><span class="line">        cin&gt;&gt;temp;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/27/nn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mr.shen">
+      <meta itemprop="description" content="等一场秋风再起，花开如绎">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AD.钙奶">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/27/nn/" class="post-title-link" itemprop="url">nn</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-27 21:33:53" itemprop="dateCreated datePublished" datetime="2021-03-27T21:33:53+08:00">2021-03-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/27/E%E9%A2%98%E9%A2%98%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mr.shen">
+      <meta itemprop="description" content="等一场秋风再起，花开如绎">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AD.钙奶">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/27/E%E9%A2%98%E9%A2%98%E8%A7%A3/" class="post-title-link" itemprop="url">E题题解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-27 21:33:53 / 修改时间：21:36:39" itemprop="dateCreated datePublished" datetime="2021-03-27T21:33:53+08:00">2021-03-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="E题题解"><a href="#E题题解" class="headerlink" title="E题题解"></a>E题题解</h1><p> 发表于 2021-01-20</p>
+<h1 id="E-Satellites"><a href="#E-Satellites" class="headerlink" title="E - Satellites"></a>E - Satellites</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>The radius of earth is 6440 Kilometer. There are many Satellites and Asteroids moving around the earth. If two Satellites create an angle with the center of earth, can you find out the distance between them? By distance we mean both the arc and chord distances. Both satellites are on the same orbit (However, please consider that they are revolving on a circular path rather than an elliptical path).</p>
+<p>Input The input file will contain one or more test cases. Each test case consists of one line containing two-integer s and a, and a string ‘min’ or ‘deg’. Here s is the distance of the satellite from the surface of the earth and a is the angle that the satellites make with the center of earth. It may be in minutes (′ ) or in degrees (◦ ). Remember that the same line will never contain minute and degree at a time.</p>
+<p>Output For each test case, print one line containing the required distances i.e. both arc distance and chord distance respectively between two satellites in Kilometer. The distance will be a floating-point value with six digits after decimal point.</p>
+<p>Sample Input</p>
+<p>500 30 deg</p>
+<p>700 60 min</p>
+<p>200 45 deg</p>
+<p>Sample Output</p>
+<p>3633.775503 3592.408346</p>
+<p>124.616509 124.614927</p>
+<p>5215.043805 5082.035982</p>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>角度单位是分(′ )和度(◦ )，1°=60′。设圆心角angle[0，180°]。则圆弧距离distance1=(2 * PI * r * angle)/360;直线距离distance2=r * sin((angle*PI)/2 * 180) * 2;</p>
+<p>如果以分为单位，将上式的angle替换成angle/60即可；</p>
+<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;iomanip&gt;</span><br><span class="line">#include &lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const double r&#x3D;6440;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    double a1,a2;</span><br><span class="line">    char s[10];</span><br><span class="line">    while(cin&gt;&gt;a1&gt;&gt;a2&gt;&gt;s)</span><br><span class="line">    &#123;</span><br><span class="line">        if(s[0]&#x3D;&#x3D;&#39;m&#39;)&#x2F;&#x2F;判断输入度数的单位</span><br><span class="line">            a2&#x3D;a2&#x2F;60;&#x2F;&#x2F;分转度</span><br><span class="line">        double angle&#x3D;M_PI*a2&#x2F;180;&#x2F;&#x2F;转换为弧度制</span><br><span class="line">        double arc&#x3D;angle*(a1+r);&#x2F;&#x2F;计算弧长</span><br><span class="line">        double dis&#x3D;2*(a1+r)*sin(angle&#x2F;2);&#x2F;&#x2F;计算两点直线距离</span><br><span class="line">        if(a2&gt;180)</span><br><span class="line">            arc&#x3D;2*M_PI*(a1+r)-arc;&#x2F;&#x2F;角度大于180的情况</span><br><span class="line">        cout&lt;&lt;setprecision(6)&lt;&lt;setiosflags(ios::fixed)&lt;&lt;arc&lt;&lt;&quot; &quot;&lt;&lt;dis&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
