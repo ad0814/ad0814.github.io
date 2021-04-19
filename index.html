@@ -171,7 +171,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -202,6 +202,69 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://ad0814.github.io/2021/04/19/2021/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mr.shen">
+      <meta itemprop="description" content="等一场秋风再起，花开如绎">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AD.钙奶">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/19/2021/" class="post-title-link" itemprop="url">2021</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-19 19:30:29" itemprop="dateCreated datePublished" datetime="2021-04-19T19:30:29+08:00">2021-04-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -266,6 +329,98 @@
 
 <h2 id="2-题目解析"><a href="#2-题目解析" class="headerlink" title="2.题目解析"></a>2.题目解析</h2><p>注意for循环，不符合条件是及时跳出循环，否则超时！！！</p>
 <h2 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int n,a[1009][1009];</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    while(~scanf(&quot;%d&quot;,&amp;n),n)</span><br><span class="line">        &#123;</span><br><span class="line">    	for(int i&#x3D;0;i&lt;n;++i)</span><br><span class="line">    	&#123;</span><br><span class="line">    		for(int j&#x3D;0;j&lt;n;++j)</span><br><span class="line">    		&#123;</span><br><span class="line">    			scanf(&quot;%d&quot;,&amp;a[i][j]);</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    	int flag&#x3D;1;&#x2F;&#x2F;判断跳出的标记</span><br><span class="line">    	for(int i&#x3D;0;i&lt;n-1;++i)&#x2F;&#x2F;遍历</span><br><span class="line">    	&#123;</span><br><span class="line">    		for(int j&#x3D;0;j&lt;n-1;++j)</span><br><span class="line">    		&#123;</span><br><span class="line">    			if((a[i][j]+a[i+1][j+1])!&#x3D;(a[i+1][j]+a[i][j+1]))</span><br><span class="line">    			&#123;</span><br><span class="line">    				flag&#x3D;0;</span><br><span class="line">    				break;&#x2F;&#x2F;不符合条件时，直接跳出循环。</span><br><span class="line">    			&#125;</span><br><span class="line">    		&#125;</span><br><span class="line">    		if(!flag) break;</span><br><span class="line">    	&#125;</span><br><span class="line">    	if(!flag) puts(&quot;not homogeneous&quot;);</span><br><span class="line">    	else puts(&quot;homogeneous&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://ad0814.github.io/2021/03/27/ICPC%EF%BC%886%EF%BC%89A%20-%20Doubles/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mr.shen">
+      <meta itemprop="description" content="等一场秋风再起，花开如绎">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AD.钙奶">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/27/ICPC%EF%BC%886%EF%BC%89A%20-%20Doubles/" class="post-title-link" itemprop="url">ICPC（6）A - Doubles</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-27 21:33:53 / 修改时间：21:38:03" itemprop="dateCreated datePublished" datetime="2021-03-27T21:33:53+08:00">2021-03-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="ICPC（6）A-Doubles"><a href="#ICPC（6）A-Doubles" class="headerlink" title="ICPC（6）A - Doubles"></a>ICPC（6）A - Doubles</h1><p>As part of an arithmetic competency program, your students will be given randomly generated lists of from 2 to 15 unique positive integers and asked to determine how many items in each list are twice some other item in the same list. You will need a program to help you with the grading. This program should be able to scan the lists and output the correct answer for each one. For example, given the list</p>
+<p><code>1 4 3 2 9 7 18 22</code><br>your program should answer 3, as 2 is twice 1, 4 is twice 2, and 18 is twice 9.</p>
+<p><strong>Input</strong></p>
+<p>The input will consist of one or more lists of numbers. There will be one list of numbers per line. Each list will contain from 2 to 15 unique positive integers. No integer will be larger than 99. Each line will be terminated with the integer 0, which is not considered part of the list. A line with the single number -1 will mark the end of the file. The example input below shows 3 separate lists. Some lists may not contain any doubles.</p>
+<p><strong>Output</strong></p>
+<p>The output will consist of one line per input list, containing a count of the items that are double some other item.</p>
+<p><strong>Sample Input</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 4 3 2 9 7 18 22 0</span><br><span class="line">2 4 8 10 0</span><br><span class="line">7 5 11 13 1 3 0</span><br><span class="line">-1</span><br></pre></td></tr></table></figure>
+
+<p><strong>Sample Output</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">2</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-set解析及其用法"><a href="#1-set解析及其用法" class="headerlink" title="1.set解析及其用法"></a>1.set解析及其用法</h2><p>头文件 <strong>#include &lt; set &gt;</strong></p>
+<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><p>set头文件主要包括set和multiset两个容器。他们都是有序集合，不过set存的元素不可重复。</p>
+<p>两者内部实现都是红黑树，在使用方法上差别不大，支持的函数基本相同。</p>
+<h3 id="声明方式"><a href="#声明方式" class="headerlink" title="声明方式"></a>声明方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set&lt;int&gt; s;</span><br><span class="line">multiset&lt;int&gt; t;</span><br><span class="line">set&lt;int&gt;::iterator it;</span><br></pre></td></tr></table></figure>
+
+<p>s与t都是维护int类型数据的有序容器，其中t内的元素可重。迭代器it仅支持++和−−。我们以int类型的数据为例：</p>
+<h3 id="s-size"><a href="#s-size" class="headerlink" title="s.size()"></a>s.size()</h3><p>返回元素个数。</p>
+<h3 id="s-empty"><a href="#s-empty" class="headerlink" title="s.empty()"></a>s.empty()</h3><p>判断set是否为空，为空则是逻辑真，否则就是逻辑假。</p>
+<h3 id="s-clear"><a href="#s-clear" class="headerlink" title="s.clear()"></a>s.clear()</h3><p>清空set。</p>
+<h3 id="s-begin-s-end"><a href="#s-begin-s-end" class="headerlink" title="s.begin()/s.end()"></a>s.begin()/s.end()</h3><p>返回set的首迭代器和尾迭代器。第一个元素/最后一个元素</p>
+<h3 id="s-insert-x-s-erase-it-x"><a href="#s-insert-x-s-erase-it-x" class="headerlink" title="s.insert(x)/s.erase(it/x)"></a>s.insert(x)/s.erase(it/x)</h3><p>插入一个intint类型的数据，删除一个迭代器或者元素x。如果x已经是在集合中的了，并且是set而不是multiset，那么就不会执行插入操作。时间复杂度为O(log)。如果是multiset则会把所有等于x的元素全部删除，复杂度为O(log+k)，k为元素个数。</p>
+<h3 id="s-find-x"><a href="#s-find-x" class="headerlink" title="s.find(x)"></a>s.find(x)</h3><p>查找等于xx的元素，返回一个迭代器。若不存在，则返回s.end()s.end()。复杂度O(log)O(log)的。</p>
+<h3 id="s-lower-bound-x-s-upper-bound-x"><a href="#s-lower-bound-x-s-upper-bound-x" class="headerlink" title="s.lower_bound(x)/s.upper_bound(x)"></a>s.lower_bound(x)/s.upper_bound(x)</h3><p>第一个是找set中大于等于xx的最小的元素，第二个是找set中严格大于xx的最小的元素，以迭代器的形式返回。时间复杂度为O(log)。若不存在，则返回s.end()。</p>
+<h3 id="s-count-x"><a href="#s-count-x" class="headerlink" title="s.count(x)"></a>s.count(x)</h3><p>返回集合中等于x的元素个数。复杂度为O(log+k)，k为元素个数。</p>
+<h3 id="迭代器iterator"><a href="#迭代器iterator" class="headerlink" title="迭代器iterator"></a>迭代器iterator</h3><p><strong>1.</strong> <strong>迭代器(iterator)是一中检查容器内元素并遍历元素的数据类型。</strong></p>
+<p>Iterator（迭代器）模式又称Cursor（游标）模式，用于提供一种方法顺序访问一个聚合对象中各个元素, 而又不需暴露该对象的内部表示。或者这样说可能更容易理解：Iterator模式是运用于聚合对象的一种模式，通过运用该模式，使得我们可以在不知道对象内部表示的情况下，按照一定顺序（由iterator提供的方法）访问聚合对象中的各个元素。</p>
+<h2 id="2-代码"><a href="#2-代码" class="headerlink" title="2.代码"></a>2.代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;set&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    set&lt;int&gt;s;</span><br><span class="line">    set&lt;int&gt;::iterator t;&#x2F;&#x2F;创建一个迭代器t</span><br><span class="line">    int temp;</span><br><span class="line">    cin&gt;&gt;temp;</span><br><span class="line">    while(temp!&#x3D;-1)</span><br><span class="line">    &#123;</span><br><span class="line">        s.clear();</span><br><span class="line">        while(temp!&#x3D;0)</span><br><span class="line">        &#123;</span><br><span class="line">            s.insert(temp);</span><br><span class="line">            cin&gt;&gt;temp;</span><br><span class="line">        &#125;</span><br><span class="line">        int c&#x3D;0;</span><br><span class="line">        for(t&#x3D;s.begin();t!&#x3D;s.end();t++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(s.count((*t)*2)!&#x3D;0)&#x2F;&#x2F;返回集合中等于（*t*2）的元素个数。</span><br><span class="line">                c++;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;c&lt;&lt;endl;</span><br><span class="line">        cin&gt;&gt;temp;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -421,98 +576,6 @@
 <h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>角度单位是分(′ )和度(◦ )，1°=60′。设圆心角angle[0，180°]。则圆弧距离distance1=(2 * PI * r * angle)/360;直线距离distance2=r * sin((angle*PI)/2 * 180) * 2;</p>
 <p>如果以分为单位，将上式的angle替换成angle/60即可；</p>
 <h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;iomanip&gt;</span><br><span class="line">#include &lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const double r&#x3D;6440;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    double a1,a2;</span><br><span class="line">    char s[10];</span><br><span class="line">    while(cin&gt;&gt;a1&gt;&gt;a2&gt;&gt;s)</span><br><span class="line">    &#123;</span><br><span class="line">        if(s[0]&#x3D;&#x3D;&#39;m&#39;)&#x2F;&#x2F;判断输入度数的单位</span><br><span class="line">            a2&#x3D;a2&#x2F;60;&#x2F;&#x2F;分转度</span><br><span class="line">        double angle&#x3D;M_PI*a2&#x2F;180;&#x2F;&#x2F;转换为弧度制</span><br><span class="line">        double arc&#x3D;angle*(a1+r);&#x2F;&#x2F;计算弧长</span><br><span class="line">        double dis&#x3D;2*(a1+r)*sin(angle&#x2F;2);&#x2F;&#x2F;计算两点直线距离</span><br><span class="line">        if(a2&gt;180)</span><br><span class="line">            arc&#x3D;2*M_PI*(a1+r)-arc;&#x2F;&#x2F;角度大于180的情况</span><br><span class="line">        cout&lt;&lt;setprecision(6)&lt;&lt;setiosflags(ios::fixed)&lt;&lt;arc&lt;&lt;&quot; &quot;&lt;&lt;dis&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://ad0814.github.io/2021/03/27/ICPC%EF%BC%886%EF%BC%89A%20-%20Doubles/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Mr.shen">
-      <meta itemprop="description" content="等一场秋风再起，花开如绎">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AD.钙奶">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/27/ICPC%EF%BC%886%EF%BC%89A%20-%20Doubles/" class="post-title-link" itemprop="url">ICPC（6）A - Doubles</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-27 21:33:53 / 修改时间：21:38:03" itemprop="dateCreated datePublished" datetime="2021-03-27T21:33:53+08:00">2021-03-27</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="ICPC（6）A-Doubles"><a href="#ICPC（6）A-Doubles" class="headerlink" title="ICPC（6）A - Doubles"></a>ICPC（6）A - Doubles</h1><p>As part of an arithmetic competency program, your students will be given randomly generated lists of from 2 to 15 unique positive integers and asked to determine how many items in each list are twice some other item in the same list. You will need a program to help you with the grading. This program should be able to scan the lists and output the correct answer for each one. For example, given the list</p>
-<p><code>1 4 3 2 9 7 18 22</code><br>your program should answer 3, as 2 is twice 1, 4 is twice 2, and 18 is twice 9.</p>
-<p><strong>Input</strong></p>
-<p>The input will consist of one or more lists of numbers. There will be one list of numbers per line. Each list will contain from 2 to 15 unique positive integers. No integer will be larger than 99. Each line will be terminated with the integer 0, which is not considered part of the list. A line with the single number -1 will mark the end of the file. The example input below shows 3 separate lists. Some lists may not contain any doubles.</p>
-<p><strong>Output</strong></p>
-<p>The output will consist of one line per input list, containing a count of the items that are double some other item.</p>
-<p><strong>Sample Input</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 4 3 2 9 7 18 22 0</span><br><span class="line">2 4 8 10 0</span><br><span class="line">7 5 11 13 1 3 0</span><br><span class="line">-1</span><br></pre></td></tr></table></figure>
-
-<p><strong>Sample Output</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">2</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
-
-<h2 id="1-set解析及其用法"><a href="#1-set解析及其用法" class="headerlink" title="1.set解析及其用法"></a>1.set解析及其用法</h2><p>头文件 <strong>#include &lt; set &gt;</strong></p>
-<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><p>set头文件主要包括set和multiset两个容器。他们都是有序集合，不过set存的元素不可重复。</p>
-<p>两者内部实现都是红黑树，在使用方法上差别不大，支持的函数基本相同。</p>
-<h3 id="声明方式"><a href="#声明方式" class="headerlink" title="声明方式"></a>声明方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set&lt;int&gt; s;</span><br><span class="line">multiset&lt;int&gt; t;</span><br><span class="line">set&lt;int&gt;::iterator it;</span><br></pre></td></tr></table></figure>
-
-<p>s与t都是维护int类型数据的有序容器，其中t内的元素可重。迭代器it仅支持++和−−。我们以int类型的数据为例：</p>
-<h3 id="s-size"><a href="#s-size" class="headerlink" title="s.size()"></a>s.size()</h3><p>返回元素个数。</p>
-<h3 id="s-empty"><a href="#s-empty" class="headerlink" title="s.empty()"></a>s.empty()</h3><p>判断set是否为空，为空则是逻辑真，否则就是逻辑假。</p>
-<h3 id="s-clear"><a href="#s-clear" class="headerlink" title="s.clear()"></a>s.clear()</h3><p>清空set。</p>
-<h3 id="s-begin-s-end"><a href="#s-begin-s-end" class="headerlink" title="s.begin()/s.end()"></a>s.begin()/s.end()</h3><p>返回set的首迭代器和尾迭代器。第一个元素/最后一个元素</p>
-<h3 id="s-insert-x-s-erase-it-x"><a href="#s-insert-x-s-erase-it-x" class="headerlink" title="s.insert(x)/s.erase(it/x)"></a>s.insert(x)/s.erase(it/x)</h3><p>插入一个intint类型的数据，删除一个迭代器或者元素x。如果x已经是在集合中的了，并且是set而不是multiset，那么就不会执行插入操作。时间复杂度为O(log)。如果是multiset则会把所有等于x的元素全部删除，复杂度为O(log+k)，k为元素个数。</p>
-<h3 id="s-find-x"><a href="#s-find-x" class="headerlink" title="s.find(x)"></a>s.find(x)</h3><p>查找等于xx的元素，返回一个迭代器。若不存在，则返回s.end()s.end()。复杂度O(log)O(log)的。</p>
-<h3 id="s-lower-bound-x-s-upper-bound-x"><a href="#s-lower-bound-x-s-upper-bound-x" class="headerlink" title="s.lower_bound(x)/s.upper_bound(x)"></a>s.lower_bound(x)/s.upper_bound(x)</h3><p>第一个是找set中大于等于xx的最小的元素，第二个是找set中严格大于xx的最小的元素，以迭代器的形式返回。时间复杂度为O(log)。若不存在，则返回s.end()。</p>
-<h3 id="s-count-x"><a href="#s-count-x" class="headerlink" title="s.count(x)"></a>s.count(x)</h3><p>返回集合中等于x的元素个数。复杂度为O(log+k)，k为元素个数。</p>
-<h3 id="迭代器iterator"><a href="#迭代器iterator" class="headerlink" title="迭代器iterator"></a>迭代器iterator</h3><p><strong>1.</strong> <strong>迭代器(iterator)是一中检查容器内元素并遍历元素的数据类型。</strong></p>
-<p>Iterator（迭代器）模式又称Cursor（游标）模式，用于提供一种方法顺序访问一个聚合对象中各个元素, 而又不需暴露该对象的内部表示。或者这样说可能更容易理解：Iterator模式是运用于聚合对象的一种模式，通过运用该模式，使得我们可以在不知道对象内部表示的情况下，按照一定顺序（由iterator提供的方法）访问聚合对象中的各个元素。</p>
-<h2 id="2-代码"><a href="#2-代码" class="headerlink" title="2.代码"></a>2.代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;set&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    set&lt;int&gt;s;</span><br><span class="line">    set&lt;int&gt;::iterator t;&#x2F;&#x2F;创建一个迭代器t</span><br><span class="line">    int temp;</span><br><span class="line">    cin&gt;&gt;temp;</span><br><span class="line">    while(temp!&#x3D;-1)</span><br><span class="line">    &#123;</span><br><span class="line">        s.clear();</span><br><span class="line">        while(temp!&#x3D;0)</span><br><span class="line">        &#123;</span><br><span class="line">            s.insert(temp);</span><br><span class="line">            cin&gt;&gt;temp;</span><br><span class="line">        &#125;</span><br><span class="line">        int c&#x3D;0;</span><br><span class="line">        for(t&#x3D;s.begin();t!&#x3D;s.end();t++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(s.count((*t)*2)!&#x3D;0)&#x2F;&#x2F;返回集合中等于（*t*2）的元素个数。</span><br><span class="line">                c++;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;c&lt;&lt;endl;</span><br><span class="line">        cin&gt;&gt;temp;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
