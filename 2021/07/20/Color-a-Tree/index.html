@@ -23,20 +23,20 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"ad0814.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="E题题解 发表于 2021-01-20 E - Satellites题目描述The radius of earth is 6440 Kilometer. There are many Satellites and Asteroids moving around the earth. If two Satellites create an angle with the center of earth">
+<meta name="description" content="A - Coloring a Tree  题解：先理解题意，给你n个点，代表这一棵树有n个节点。第二行内容是建树的关系。 12例如：1 2 2 1 5代表：节点2和节点1相连，节点3和节点2相连，节点4和节点2相连，节点5和节点1相连，节点6和节点5相连。  1第三行内容是需要将各个点涂成的颜色，给这个树涂色，有这么一条原则就是给某一节点涂色，以其为根节点的子树也将变为相应的颜色。  思路： 12">
 <meta property="og:type" content="article">
-<meta property="og:title" content="E题题解">
-<meta property="og:url" content="http://ad0814.github.io/2021/03/27/E%E9%A2%98%E9%A2%98%E8%A7%A3/index.html">
+<meta property="og:title" content="Color a Tree">
+<meta property="og:url" content="http://ad0814.github.io/2021/07/20/Color-a-Tree/index.html">
 <meta property="og:site_name" content="AD.钙奶">
-<meta property="og:description" content="E题题解 发表于 2021-01-20 E - Satellites题目描述The radius of earth is 6440 Kilometer. There are many Satellites and Asteroids moving around the earth. If two Satellites create an angle with the center of earth">
+<meta property="og:description" content="A - Coloring a Tree  题解：先理解题意，给你n个点，代表这一棵树有n个节点。第二行内容是建树的关系。 12例如：1 2 2 1 5代表：节点2和节点1相连，节点3和节点2相连，节点4和节点2相连，节点5和节点1相连，节点6和节点5相连。  1第三行内容是需要将各个点涂成的颜色，给这个树涂色，有这么一条原则就是给某一节点涂色，以其为根节点的子树也将变为相应的颜色。  思路： 12">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-27T13:33:53.000Z">
-<meta property="article:modified_time" content="2021-03-27T13:36:39.562Z">
+<meta property="article:published_time" content="2021-07-20T12:40:01.000Z">
+<meta property="article:modified_time" content="2021-07-20T14:35:16.691Z">
 <meta property="article:author" content="Mr.shen">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://ad0814.github.io/2021/03/27/E%E9%A2%98%E9%A2%98%E8%A7%A3/">
+<link rel="canonical" href="http://ad0814.github.io/2021/07/20/Color-a-Tree/">
 
 
 <script class="page-configurations">
@@ -48,7 +48,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title>E题题解 | AD.钙奶</title>
+<title>Color a Tree | AD.钙奶</title>
   
 
 
@@ -158,7 +158,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#E%E9%A2%98%E9%A2%98%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">E题题解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#E-Satellites"><span class="nav-number">2.</span> <span class="nav-text">E - Satellites</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90"><span class="nav-number">2.2.</span> <span class="nav-text">解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81"><span class="nav-number">2.3.</span> <span class="nav-text">实现代码</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Coloring-a-Tree"><span class="nav-number">1.</span> <span class="nav-text">A - Coloring a Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">题解：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">代码：</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -215,7 +215,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://ad0814.github.io/2021/03/27/E%E9%A2%98%E9%A2%98%E8%A7%A3/">
+    <link itemprop="mainEntityOfPage" href="http://ad0814.github.io/2021/07/20/Color-a-Tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -228,7 +228,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          E题题解
+          Color a Tree
         </h1>
 
         <div class="post-meta-container">
@@ -240,7 +240,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-03-27 21:33:53 / 修改时间：21:36:39" itemprop="dateCreated datePublished" datetime="2021-03-27T21:33:53+08:00">2021-03-27</time>
+      <time title="创建时间：2021-07-20 20:40:01 / 修改时间：22:35:16" itemprop="dateCreated datePublished" datetime="2021-07-20T20:40:01+08:00">2021-07-20</time>
     </span>
 
   
@@ -253,21 +253,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="E题题解"><a href="#E题题解" class="headerlink" title="E题题解"></a>E题题解</h1><p> 发表于 2021-01-20</p>
-<h1 id="E-Satellites"><a href="#E-Satellites" class="headerlink" title="E - Satellites"></a>E - Satellites</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>The radius of earth is 6440 Kilometer. There are many Satellites and Asteroids moving around the earth. If two Satellites create an angle with the center of earth, can you find out the distance between them? By distance we mean both the arc and chord distances. Both satellites are on the same orbit (However, please consider that they are revolving on a circular path rather than an elliptical path).</p>
-<p>Input The input file will contain one or more test cases. Each test case consists of one line containing two-integer s and a, and a string ‘min’ or ‘deg’. Here s is the distance of the satellite from the surface of the earth and a is the angle that the satellites make with the center of earth. It may be in minutes (′ ) or in degrees (◦ ). Remember that the same line will never contain minute and degree at a time.</p>
-<p>Output For each test case, print one line containing the required distances i.e. both arc distance and chord distance respectively between two satellites in Kilometer. The distance will be a floating-point value with six digits after decimal point.</p>
-<p>Sample Input</p>
-<p>500 30 deg</p>
-<p>700 60 min</p>
-<p>200 45 deg</p>
-<p>Sample Output</p>
-<p>3633.775503 3592.408346</p>
-<p>124.616509 124.614927</p>
-<p>5215.043805 5082.035982</p>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>角度单位是分(′ )和度(◦ )，1°=60′。设圆心角angle[0，180°]。则圆弧距离distance1=(2 * PI * r * angle)/360;直线距离distance2=r * sin((angle*PI)/2 * 180) * 2;</p>
-<p>如果以分为单位，将上式的angle替换成angle/60即可；</p>
-<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;iomanip&gt;</span><br><span class="line">#include &lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const double r&#x3D;6440;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    double a1,a2;</span><br><span class="line">    char s[10];</span><br><span class="line">    while(cin&gt;&gt;a1&gt;&gt;a2&gt;&gt;s)</span><br><span class="line">    &#123;</span><br><span class="line">        if(s[0]&#x3D;&#x3D;&#39;m&#39;)&#x2F;&#x2F;判断输入度数的单位</span><br><span class="line">            a2&#x3D;a2&#x2F;60;&#x2F;&#x2F;分转度</span><br><span class="line">        double angle&#x3D;M_PI*a2&#x2F;180;&#x2F;&#x2F;转换为弧度制</span><br><span class="line">        double arc&#x3D;angle*(a1+r);&#x2F;&#x2F;计算弧长</span><br><span class="line">        double dis&#x3D;2*(a1+r)*sin(angle&#x2F;2);&#x2F;&#x2F;计算两点直线距离</span><br><span class="line">        if(a2&gt;180)</span><br><span class="line">            arc&#x3D;2*M_PI*(a1+r)-arc;&#x2F;&#x2F;角度大于180的情况</span><br><span class="line">        cout&lt;&lt;setprecision(6)&lt;&lt;setiosflags(ios::fixed)&lt;&lt;arc&lt;&lt;&quot; &quot;&lt;&lt;dis&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="A-Coloring-a-Tree"><a href="#A-Coloring-a-Tree" class="headerlink" title="A - Coloring a Tree"></a>A - Coloring a Tree</h2><iframe src="https://vjudge.net/problem/description/93592?1626741448000" width="100%" height="900px" frameborder="0" scrolling="no" style="box-sizing: inherit; height: 5360.67px;"></iframe>
+
+<h2 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h2><p>先理解题意，给你n个点，代表这一棵树有n个节点。第二行内容是建树的关系。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">例如：1 2 2 1 5</span><br><span class="line">代表：节点2和节点1相连，节点3和节点2相连，节点4和节点2相连，节点5和节点1相连，节点6和节点5相连。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">第三行内容是需要将各个点涂成的颜色，给这个树涂色，有这么一条原则就是给某一节点涂色，以其为根节点的子树也将变为相应的颜色。</span><br></pre></td></tr></table></figure>
+
+<p>思路：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">因为最后需要使所有的点都涂成要求的颜色，一定是按照从根节点到叶子节点遍历的涂色，但所有的点都遍历会造成浪费，我们只需要找出需要涂的点即可，</span><br><span class="line">那么哪些点需要涂呢？我们发现只有那些最后要求的其父亲节点和本身不同色的需要涂色，因为需要向下改变自身颜色，那么只需要统计这样点的个数即可。</span><br><span class="line">最怕dfs因为dfs永远学不会，最后发现也可以直接循环搜索，反正都告诉你子节点父节点关系了，那就循环找呗。</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">10000</span>];</span><br><span class="line"><span class="keyword">int</span> b[<span class="number">10000</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,count=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    a[<span class="number">0</span>]=<span class="number">1</span>;a[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;b[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">if</span>(b[i]!=b[a[i]])</span><br><span class="line">         &#123;</span><br><span class="line">             count++;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;count+<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
@@ -280,14 +278,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/03/27/ICPC%E8%AE%AD%E7%BB%83%E8%81%94%E7%9B%9F2021%E5%AF%92%E5%81%87%E5%86%AC%E4%BB%A4%E8%90%A5%EF%BC%885%EF%BC%89H-%E6%8E%92%E5%90%8D/" rel="prev" title="ICPC训练联盟2021寒假冬令营（5）H-排名">
-                  <i class="fa fa-chevron-left"></i> ICPC训练联盟2021寒假冬令营（5）H-排名
+                <a href="/2021/07/19/Max-Cost-Deletion/" rel="prev" title="Max Cost Deletion">
+                  <i class="fa fa-chevron-left"></i> Max Cost Deletion
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/03/27/D%20-%20Homogeneous%20Squares/" rel="next" title="Homogeneous Squares">
-                  Homogeneous Squares <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
