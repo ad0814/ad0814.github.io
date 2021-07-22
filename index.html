@@ -171,7 +171,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -202,6 +202,84 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://ad0814.github.io/2021/07/22/Balanced-Lineup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mr.shen">
+      <meta itemprop="description" content="等一场秋风再起，花开如绎">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AD.钙奶">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/07/22/Balanced-Lineup/" class="post-title-link" itemprop="url">Balanced Lineup</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-07-22 16:34:22 / 修改时间：18:18:27" itemprop="dateCreated datePublished" datetime="2021-07-22T16:34:22+08:00">2021-07-22</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>ST表</p>
+<p>设f[i,j]表示从第i个元素到2^j^个元素的最值</p>
+<p><img src="/2021/07/22/Balanced-Lineup/Users/HW/blog/source/_posts/Balanced-Lineup/image-20210722163737230-16269430614121.png" alt="image-20210722163737230"></p>
+<p>状态转移方程：f[i,j]=max(f[i,j-1],f[i+2^j-1^,j-1])</p>
+<p>边界条件：f[i,0]=a[i];</p>
+<p>查询：</p>
+<p>对于查询区间[L,R]，令x满足2^x^&lt;=R-L+1的最大整数，即x=int(log(R-l+1)/log(2))</p>
+<p><img src="/2021/07/22/Balanced-Lineup/Users/HW/blog/source/_posts/Balanced-Lineup/image-20210722175315879.png" alt="image-20210722175315879"></p>
+<h2 id="Balanced-Lineup"><a href="#Balanced-Lineup" class="headerlink" title="Balanced Lineup"></a>Balanced Lineup</h2><iframe src="https://vjudge.net/problem/description/5803?1626761764000" width="100%" height="900px" frameborder="0" scrolling="no" style="box-sizing: inherit; height: 1364.33px;"></iframe>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">50010</span>][<span class="number">20</span>];</span><br><span class="line"><span class="keyword">int</span> g[<span class="number">50010</span>][<span class="number">20</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t,n,q,x,y;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;q;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">        f[i][<span class="number">0</span>]=t;</span><br><span class="line">        g[i][<span class="number">0</span>]=t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;(<span class="number">1</span>&lt;&lt;i)&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;(j+(<span class="number">1</span>&lt;&lt;i)<span class="number">-1</span>)&lt;=n;j++)<span class="comment">//j+(1&lt;&lt;i)-1&lt;=n最后一个值要在原数组内</span></span><br><span class="line">        &#123;</span><br><span class="line">            f[j][i]=max(f[j][i<span class="number">-1</span>],f[j+(<span class="number">1</span>&lt;&lt;(i<span class="number">-1</span>))][i<span class="number">-1</span>]);<span class="comment">//2的i次方的区间的最值为前2的i次方-1区间的最值与后2的i次方-1区间最值的最值</span></span><br><span class="line">            g[j][i]=min(g[j][i<span class="number">-1</span>],g[j+(<span class="number">1</span>&lt;&lt;(i<span class="number">-1</span>))][i<span class="number">-1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">while</span>(q--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y;</span><br><span class="line">        <span class="keyword">int</span> z=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1</span>&lt;&lt;(z+<span class="number">1</span>)&lt;=y-x+<span class="number">1</span>)<span class="comment">//计算区间长度于2ˆz的关系，用小于2^z&lt;=y-x+1，的 z 把区间分成可以交叉的两部分x 到 x+2^（k）- 1, 到 y -(y-x+1&lt;&lt;k)+1 到 y 的两部分</span></span><br><span class="line">            z++;</span><br><span class="line">        <span class="keyword">int</span> ans=max(f[x][z],f[y-(<span class="number">1</span>&lt;&lt;z)+<span class="number">1</span>][z])-min(g[x][z],g[y-(<span class="number">1</span>&lt;&lt;z)+<span class="number">1</span>][z]);</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1029,83 +1107,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://ad0814.github.io/2021/03/27/ICPC%E8%AE%AD%E7%BB%83%E8%81%94%E7%9B%9F2021%E5%AF%92%E5%81%87%E5%86%AC%E4%BB%A4%E8%90%A5%EF%BC%885%EF%BC%89H-%E6%8E%92%E5%90%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Mr.shen">
-      <meta itemprop="description" content="等一场秋风再起，花开如绎">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AD.钙奶">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/27/ICPC%E8%AE%AD%E7%BB%83%E8%81%94%E7%9B%9F2021%E5%AF%92%E5%81%87%E5%86%AC%E4%BB%A4%E8%90%A5%EF%BC%885%EF%BC%89H-%E6%8E%92%E5%90%8D/" class="post-title-link" itemprop="url">ICPC训练联盟2021寒假冬令营（5）H-排名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-27 21:33:53 / 修改时间：21:37:55" itemprop="dateCreated datePublished" datetime="2021-03-27T21:33:53+08:00">2021-03-27</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="ICPC训练联盟2021寒假冬令营（5）H-排名"><a href="#ICPC训练联盟2021寒假冬令营（5）H-排名" class="headerlink" title="ICPC训练联盟2021寒假冬令营（5）H-排名"></a>ICPC训练联盟2021寒假冬令营（5）H-排名</h1><p> 发表于 2021-01-23</p>
-<h1 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h1><p>今天的上机考试虽然有实时的Ranklist，但上面的排名只是根据完成的题数排序，没有考虑<br>每题的分值，所以并不是最后的排名。给定录取分数线，请你写程序找出最后通过分数线的<br>考生，并将他们的成绩按降序打印。</p>
-<p><strong>Input</strong></p>
-<p>测试输入包含若干场考试的信息。每场考试信息的第1行给出考生人数N ( 0 &lt; N<br>&lt; 1000 )、考题数M ( 0 &lt; M &lt; = 10 )、分数线（正整数）G；第2行排序给出第1题至第M题的正整数分值；以下N行，每行给出一<br>名考生的准考证号（长度不超过20的字符串）、该生解决的题目总数m、以及这m道题的题号<br>（题目号由1到M）。<br>当读入的考生人数为0时，输入结束，该场考试不予处理。</p>
-<p><strong>Output</strong></p>
-<p>对每场考试，首先在第1行输出不低于分数线的考生人数n，随后n行按分数从高<br>到低输出上线考生的考号与分数，其间用1空格分隔。若有多名考生分数相同，则按他们考<br>号的升序输出。</p>
-<p><strong>Sample Input</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">4 5 25</span><br><span class="line">10 10 12 13 15</span><br><span class="line">CS004 3 5 1 3</span><br><span class="line">CS003 5 2 4 1 3 5</span><br><span class="line">CS002 2 1 2</span><br><span class="line">CS001 3 2 3 5</span><br><span class="line">1 2 40</span><br><span class="line">10 30</span><br><span class="line">CS001 1 2</span><br><span class="line">2 3 20</span><br><span class="line">10 10 10</span><br><span class="line">CS000000000000000001 0</span><br><span class="line">CS000000000000000002 2 1 2</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
-
-<p><strong>Sample Output</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">CS003 60</span><br><span class="line">CS001 37</span><br><span class="line">CS004 37</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">CS000000000000000002 20</span><br></pre></td></tr></table></figure>
-
-<h1 id="2-实现代码"><a href="#2-实现代码" class="headerlink" title="2.实现代码"></a>2.实现代码</h1><p>本题输入口太多！！！注意搞清楚函数名和输入顺序！！！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define N 1005</span><br><span class="line">int que[15];</span><br><span class="line">struct ks</span><br><span class="line">&#123;</span><br><span class="line">    char name[25];&#x2F;&#x2F;考生号</span><br><span class="line">    int num;&#x2F;&#x2F;解决问题总数</span><br><span class="line">    int sum;&#x2F;&#x2F;分数</span><br><span class="line">&#125;stu[N];</span><br><span class="line">bool cmp(const ks &amp;a,const ks &amp;b)</span><br><span class="line">&#123;</span><br><span class="line">    if(a.sum&#x3D;&#x3D;b.sum)</span><br><span class="line">        return strcmp(a.name,b.name)&lt;0?1:0;&#x2F;&#x2F;比较考生号</span><br><span class="line">    else</span><br><span class="line">        return a.sum&gt;b.sum;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int stu_num,text_num,line,a,cnt;&#x2F;&#x2F;stu_num考生人数，text_num考题数</span><br><span class="line">    while(cin&gt;&gt;stu_num&amp;&amp;stu_num)</span><br><span class="line">    &#123;</span><br><span class="line">        cnt&#x3D;0;</span><br><span class="line">        int j;</span><br><span class="line">        cin&gt;&gt;text_num&gt;&gt;line;</span><br><span class="line">        for(j&#x3D;1;j&lt;&#x3D;text_num;j++)</span><br><span class="line">            cin&gt;&gt;que[j];</span><br><span class="line">        for(j&#x3D;1;j&lt;&#x3D;stu_num;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            stu[j].sum&#x3D;0;&#x2F;&#x2F;初始化成绩求和</span><br><span class="line">            cin&gt;&gt;stu[j].name&gt;&gt;stu[j].num;</span><br><span class="line">            while(stu[j].num--)</span><br><span class="line">            &#123;</span><br><span class="line">                cin&gt;&gt;a;&#x2F;&#x2F;做对的题号</span><br><span class="line">                stu[j].sum+&#x3D;que[a];&#x2F;&#x2F;求总成绩</span><br><span class="line">            &#125;</span><br><span class="line">            if(stu[j].sum&gt;&#x3D;line)</span><br><span class="line">                cnt++;&#x2F;&#x2F;计算过分数线的人树</span><br><span class="line">        &#125;</span><br><span class="line">        sort(stu+1,stu+1+stu_num,cmp);&#x2F;&#x2F;排序</span><br><span class="line">        cout&lt;&lt;cnt&lt;&lt;endl;</span><br><span class="line">        for(j&#x3D;1;j&lt;&#x3D;stu_num;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(stu[j].sum&gt;&#x3D;line)</span><br><span class="line">                cout&lt;&lt;stu[j].name&lt;&lt;&quot; &quot;&lt;&lt;stu[j].sum&lt;&lt;endl;</span><br><span class="line">            else</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://ad0814.github.io/2021/03/27/ICPC%EF%BC%886%EF%BC%89A%20-%20Doubles/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1190,6 +1191,9 @@
 
 
 
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 <script>

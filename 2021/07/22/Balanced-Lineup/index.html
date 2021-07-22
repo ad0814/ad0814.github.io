@@ -23,20 +23,23 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"ad0814.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="E题题解 发表于 2021-01-20 E - Satellites题目描述The radius of earth is 6440 Kilometer. There are many Satellites and Asteroids moving around the earth. If two Satellites create an angle with the center of earth">
+<meta name="description" content="ST表 设f[i,j]表示从第i个元素到2^j^个元素的最值  状态转移方程：f[i,j]&#x3D;max(f[i,j-1],f[i+2^j-1^,j-1]) 边界条件：f[i,0]&#x3D;a[i]; 查询： 对于查询区间[L,R]，令x满足2^x^&lt;&#x3D;R-L+1的最大整数，即x&#x3D;int(log(R-l+1)&#x2F;log(2))  Balanced Lineup  1234567891011121314151">
 <meta property="og:type" content="article">
-<meta property="og:title" content="E题题解">
-<meta property="og:url" content="http://ad0814.github.io/2021/03/27/E%E9%A2%98%E9%A2%98%E8%A7%A3/index.html">
+<meta property="og:title" content="Balanced Lineup">
+<meta property="og:url" content="http://ad0814.github.io/2021/07/22/Balanced-Lineup/index.html">
 <meta property="og:site_name" content="AD.钙奶">
-<meta property="og:description" content="E题题解 发表于 2021-01-20 E - Satellites题目描述The radius of earth is 6440 Kilometer. There are many Satellites and Asteroids moving around the earth. If two Satellites create an angle with the center of earth">
+<meta property="og:description" content="ST表 设f[i,j]表示从第i个元素到2^j^个元素的最值  状态转移方程：f[i,j]&#x3D;max(f[i,j-1],f[i+2^j-1^,j-1]) 边界条件：f[i,0]&#x3D;a[i]; 查询： 对于查询区间[L,R]，令x满足2^x^&lt;&#x3D;R-L+1的最大整数，即x&#x3D;int(log(R-l+1)&#x2F;log(2))  Balanced Lineup  1234567891011121314151">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-27T13:33:53.000Z">
-<meta property="article:modified_time" content="2021-03-27T13:36:39.562Z">
+<meta property="og:image" content="http://ad0814.github.io/2021/07/22/Balanced-Lineup/Users/HW/blog/source/_posts/Balanced-Lineup/image-20210722163737230-16269430614121.png">
+<meta property="og:image" content="http://ad0814.github.io/2021/07/22/Balanced-Lineup/Users/HW/blog/source/_posts/Balanced-Lineup/image-20210722175315879.png">
+<meta property="article:published_time" content="2021-07-22T08:34:22.000Z">
+<meta property="article:modified_time" content="2021-07-22T10:18:27.017Z">
 <meta property="article:author" content="Mr.shen">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ad0814.github.io/2021/07/22/Balanced-Lineup/Users/HW/blog/source/_posts/Balanced-Lineup/image-20210722163737230-16269430614121.png">
 
 
-<link rel="canonical" href="http://ad0814.github.io/2021/03/27/E%E9%A2%98%E9%A2%98%E8%A7%A3/">
+<link rel="canonical" href="http://ad0814.github.io/2021/07/22/Balanced-Lineup/">
 
 
 <script class="page-configurations">
@@ -48,7 +51,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title>E题题解 | AD.钙奶</title>
+<title>Balanced Lineup | AD.钙奶</title>
   
 
 
@@ -158,7 +161,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#E%E9%A2%98%E9%A2%98%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">E题题解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#E-Satellites"><span class="nav-number">2.</span> <span class="nav-text">E - Satellites</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90"><span class="nav-number">2.2.</span> <span class="nav-text">解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81"><span class="nav-number">2.3.</span> <span class="nav-text">实现代码</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Balanced-Lineup"><span class="nav-number">1.</span> <span class="nav-text">Balanced Lineup</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -215,7 +218,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://ad0814.github.io/2021/03/27/E%E9%A2%98%E9%A2%98%E8%A7%A3/">
+    <link itemprop="mainEntityOfPage" href="http://ad0814.github.io/2021/07/22/Balanced-Lineup/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -228,7 +231,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          E题题解
+          Balanced Lineup
         </h1>
 
         <div class="post-meta-container">
@@ -240,7 +243,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-03-27 21:33:53 / 修改时间：21:36:39" itemprop="dateCreated datePublished" datetime="2021-03-27T21:33:53+08:00">2021-03-27</time>
+      <time title="创建时间：2021-07-22 16:34:22 / 修改时间：18:18:27" itemprop="dateCreated datePublished" datetime="2021-07-22T16:34:22+08:00">2021-07-22</time>
     </span>
 
   
@@ -253,21 +256,21 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="E题题解"><a href="#E题题解" class="headerlink" title="E题题解"></a>E题题解</h1><p> 发表于 2021-01-20</p>
-<h1 id="E-Satellites"><a href="#E-Satellites" class="headerlink" title="E - Satellites"></a>E - Satellites</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>The radius of earth is 6440 Kilometer. There are many Satellites and Asteroids moving around the earth. If two Satellites create an angle with the center of earth, can you find out the distance between them? By distance we mean both the arc and chord distances. Both satellites are on the same orbit (However, please consider that they are revolving on a circular path rather than an elliptical path).</p>
-<p>Input The input file will contain one or more test cases. Each test case consists of one line containing two-integer s and a, and a string ‘min’ or ‘deg’. Here s is the distance of the satellite from the surface of the earth and a is the angle that the satellites make with the center of earth. It may be in minutes (′ ) or in degrees (◦ ). Remember that the same line will never contain minute and degree at a time.</p>
-<p>Output For each test case, print one line containing the required distances i.e. both arc distance and chord distance respectively between two satellites in Kilometer. The distance will be a floating-point value with six digits after decimal point.</p>
-<p>Sample Input</p>
-<p>500 30 deg</p>
-<p>700 60 min</p>
-<p>200 45 deg</p>
-<p>Sample Output</p>
-<p>3633.775503 3592.408346</p>
-<p>124.616509 124.614927</p>
-<p>5215.043805 5082.035982</p>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>角度单位是分(′ )和度(◦ )，1°=60′。设圆心角angle[0，180°]。则圆弧距离distance1=(2 * PI * r * angle)/360;直线距离distance2=r * sin((angle*PI)/2 * 180) * 2;</p>
-<p>如果以分为单位，将上式的angle替换成angle/60即可；</p>
-<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;iomanip&gt;</span><br><span class="line">#include &lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const double r&#x3D;6440;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    double a1,a2;</span><br><span class="line">    char s[10];</span><br><span class="line">    while(cin&gt;&gt;a1&gt;&gt;a2&gt;&gt;s)</span><br><span class="line">    &#123;</span><br><span class="line">        if(s[0]&#x3D;&#x3D;&#39;m&#39;)&#x2F;&#x2F;判断输入度数的单位</span><br><span class="line">            a2&#x3D;a2&#x2F;60;&#x2F;&#x2F;分转度</span><br><span class="line">        double angle&#x3D;M_PI*a2&#x2F;180;&#x2F;&#x2F;转换为弧度制</span><br><span class="line">        double arc&#x3D;angle*(a1+r);&#x2F;&#x2F;计算弧长</span><br><span class="line">        double dis&#x3D;2*(a1+r)*sin(angle&#x2F;2);&#x2F;&#x2F;计算两点直线距离</span><br><span class="line">        if(a2&gt;180)</span><br><span class="line">            arc&#x3D;2*M_PI*(a1+r)-arc;&#x2F;&#x2F;角度大于180的情况</span><br><span class="line">        cout&lt;&lt;setprecision(6)&lt;&lt;setiosflags(ios::fixed)&lt;&lt;arc&lt;&lt;&quot; &quot;&lt;&lt;dis&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>ST表</p>
+<p>设f[i,j]表示从第i个元素到2^j^个元素的最值</p>
+<p><img src="/2021/07/22/Balanced-Lineup/Users/HW/blog/source/_posts/Balanced-Lineup/image-20210722163737230-16269430614121.png" alt="image-20210722163737230"></p>
+<p>状态转移方程：f[i,j]=max(f[i,j-1],f[i+2^j-1^,j-1])</p>
+<p>边界条件：f[i,0]=a[i];</p>
+<p>查询：</p>
+<p>对于查询区间[L,R]，令x满足2^x^&lt;=R-L+1的最大整数，即x=int(log(R-l+1)/log(2))</p>
+<p><img src="/2021/07/22/Balanced-Lineup/Users/HW/blog/source/_posts/Balanced-Lineup/image-20210722175315879.png" alt="image-20210722175315879"></p>
+<h2 id="Balanced-Lineup"><a href="#Balanced-Lineup" class="headerlink" title="Balanced Lineup"></a>Balanced Lineup</h2><iframe src="https://vjudge.net/problem/description/5803?1626761764000" width="100%" height="900px" frameborder="0" scrolling="no" style="box-sizing: inherit; height: 1364.33px;"></iframe>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">50010</span>][<span class="number">20</span>];</span><br><span class="line"><span class="keyword">int</span> g[<span class="number">50010</span>][<span class="number">20</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t,n,q,x,y;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;q;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">        f[i][<span class="number">0</span>]=t;</span><br><span class="line">        g[i][<span class="number">0</span>]=t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;(<span class="number">1</span>&lt;&lt;i)&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;(j+(<span class="number">1</span>&lt;&lt;i)<span class="number">-1</span>)&lt;=n;j++)<span class="comment">//j+(1&lt;&lt;i)-1&lt;=n最后一个值要在原数组内</span></span><br><span class="line">        &#123;</span><br><span class="line">            f[j][i]=max(f[j][i<span class="number">-1</span>],f[j+(<span class="number">1</span>&lt;&lt;(i<span class="number">-1</span>))][i<span class="number">-1</span>]);<span class="comment">//2的i次方的区间的最值为前2的i次方-1区间的最值与后2的i次方-1区间最值的最值</span></span><br><span class="line">            g[j][i]=min(g[j][i<span class="number">-1</span>],g[j+(<span class="number">1</span>&lt;&lt;(i<span class="number">-1</span>))][i<span class="number">-1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">while</span>(q--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y;</span><br><span class="line">        <span class="keyword">int</span> z=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1</span>&lt;&lt;(z+<span class="number">1</span>)&lt;=y-x+<span class="number">1</span>)<span class="comment">//计算区间长度于2ˆz的关系，用小于2^z&lt;=y-x+1，的 z 把区间分成可以交叉的两部分x 到 x+2^（k）- 1, 到 y -(y-x+1&lt;&lt;k)+1 到 y 的两部分</span></span><br><span class="line">            z++;</span><br><span class="line">        <span class="keyword">int</span> ans=max(f[x][z],f[y-(<span class="number">1</span>&lt;&lt;z)+<span class="number">1</span>][z])-min(g[x][z],g[y-(<span class="number">1</span>&lt;&lt;z)+<span class="number">1</span>][z]);</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
     </div>
 
     
@@ -280,14 +283,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/03/27/ICPC%EF%BC%886%EF%BC%89A%20-%20Doubles/" rel="prev" title="ICPC（6）A - Doubles">
-                  <i class="fa fa-chevron-left"></i> ICPC（6）A - Doubles
+                <a href="/2021/07/20/The-Tag-Game/" rel="prev" title="The Tag Game">
+                  <i class="fa fa-chevron-left"></i> The Tag Game
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/03/27/D%20-%20Homogeneous%20Squares/" rel="next" title="Homogeneous Squares">
-                  Homogeneous Squares <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

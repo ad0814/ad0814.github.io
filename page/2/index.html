@@ -23,32 +23,30 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"ad0814.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="ICPC训练联盟2021寒假冬令营（5）H-排名 发表于 2021-01-23 1.题目今天的上机考试虽然有实时的Ranklist，但上面的排名只是根据完成的题数排序，没有考虑每题的分值，所以并不是最后的排名。给定录取分数线，请你写程序找出最后通过分数线的考生，并将他们的成绩按降序打印。 Input 测试输入包含若干场考试的信息。每场考试信息的第1行给出考生人数N ( 0 &lt; N&lt; 1">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ICPC训练联盟2021寒假冬令营（5）H-排名">
-<meta property="og:url" content="http://ad0814.github.io/2021/03/27/ICPC%E8%AE%AD%E7%BB%83%E8%81%94%E7%9B%9F2021%E5%AF%92%E5%81%87%E5%86%AC%E4%BB%A4%E8%90%A5%EF%BC%885%EF%BC%89H-%E6%8E%92%E5%90%8D/index.html">
+<meta name="description" content="等一场秋风再起，花开如绎">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AD.钙奶">
+<meta property="og:url" content="http://ad0814.github.io/page/2/index.html">
 <meta property="og:site_name" content="AD.钙奶">
-<meta property="og:description" content="ICPC训练联盟2021寒假冬令营（5）H-排名 发表于 2021-01-23 1.题目今天的上机考试虽然有实时的Ranklist，但上面的排名只是根据完成的题数排序，没有考虑每题的分值，所以并不是最后的排名。给定录取分数线，请你写程序找出最后通过分数线的考生，并将他们的成绩按降序打印。 Input 测试输入包含若干场考试的信息。每场考试信息的第1行给出考生人数N ( 0 &lt; N&lt; 1">
+<meta property="og:description" content="等一场秋风再起，花开如绎">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-27T13:33:53.000Z">
-<meta property="article:modified_time" content="2021-03-27T13:37:55.087Z">
 <meta property="article:author" content="Mr.shen">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://ad0814.github.io/2021/03/27/ICPC%E8%AE%AD%E7%BB%83%E8%81%94%E7%9B%9F2021%E5%AF%92%E5%81%87%E5%86%AC%E4%BB%A4%E8%90%A5%EF%BC%885%EF%BC%89H-%E6%8E%92%E5%90%8D/">
+<link rel="canonical" href="http://ad0814.github.io/page/2/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
-    isPost : true,
+    isHome : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
-<title>ICPC训练联盟2021寒假冬令营（5）H-排名 | AD.钙奶</title>
+<title>AD.钙奶</title>
   
 
 
@@ -145,7 +143,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -158,7 +156,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ICPC%E8%AE%AD%E7%BB%83%E8%81%94%E7%9B%9F2021%E5%AF%92%E5%81%87%E5%86%AC%E4%BB%A4%E8%90%A5%EF%BC%885%EF%BC%89H-%E6%8E%92%E5%90%8D"><span class="nav-number">1.</span> <span class="nav-text">ICPC训练联盟2021寒假冬令营（5）H-排名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E9%A2%98%E7%9B%AE"><span class="nav-number">2.</span> <span class="nav-text">1.题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">2.实现代码</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -204,17 +201,16 @@
 </noscript>
 
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner index posts-expand">
 
-
-  
+    
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://ad0814.github.io/2021/03/27/ICPC%E8%AE%AD%E7%BB%83%E8%81%94%E7%9B%9F2021%E5%AF%92%E5%81%87%E5%86%AC%E4%BB%A4%E8%90%A5%EF%BC%885%EF%BC%89H-%E6%8E%92%E5%90%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -227,9 +223,9 @@
       <meta itemprop="name" content="AD.钙奶">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          ICPC训练联盟2021寒假冬令营（5）H-排名
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/27/ICPC%E8%AE%AD%E7%BB%83%E8%81%94%E7%9B%9F2021%E5%AF%92%E5%81%87%E5%86%AC%E4%BB%A4%E8%90%A5%EF%BC%885%EF%BC%89H-%E6%8E%92%E5%90%8D/" class="post-title-link" itemprop="url">ICPC训练联盟2021寒假冬令营（5）H-排名</a>
+        </h2>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -253,7 +249,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="ICPC训练联盟2021寒假冬令营（5）H-排名"><a href="#ICPC训练联盟2021寒假冬令营（5）H-排名" class="headerlink" title="ICPC训练联盟2021寒假冬令营（5）H-排名"></a>ICPC训练联盟2021寒假冬令营（5）H-排名</h1><p> 发表于 2021-01-23</p>
+          <h1 id="ICPC训练联盟2021寒假冬令营（5）H-排名"><a href="#ICPC训练联盟2021寒假冬令营（5）H-排名" class="headerlink" title="ICPC训练联盟2021寒假冬令营（5）H-排名"></a>ICPC训练联盟2021寒假冬令营（5）H-排名</h1><p> 发表于 2021-01-23</p>
 <h1 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h1><p>今天的上机考试虽然有实时的Ranklist，但上面的排名只是根据完成的题数排序，没有考虑<br>每题的分值，所以并不是最后的排名。给定录取分数线，请你写程序找出最后通过分数线的<br>考生，并将他们的成绩按降序打印。</p>
 <p><strong>Input</strong></p>
 <p>测试输入包含若干场考试的信息。每场考试信息的第1行给出考生人数N ( 0 &lt; N<br>&lt; 1000 )、考题数M ( 0 &lt; M &lt; = 10 )、分数线（正整数）G；第2行排序给出第1题至第M题的正整数分值；以下N行，每行给出一<br>名考生的准考证号（长度不超过20的字符串）、该生解决的题目总数m、以及这m道题的题号<br>（题目号由1到M）。<br>当读入的考生人数为0时，输入结束，该场考试不予处理。</p>
@@ -267,6 +263,7 @@
 
 <h1 id="2-实现代码"><a href="#2-实现代码" class="headerlink" title="2.实现代码"></a>2.实现代码</h1><p>本题输入口太多！！！注意搞清楚函数名和输入顺序！！！</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define N 1005</span><br><span class="line">int que[15];</span><br><span class="line">struct ks</span><br><span class="line">&#123;</span><br><span class="line">    char name[25];&#x2F;&#x2F;考生号</span><br><span class="line">    int num;&#x2F;&#x2F;解决问题总数</span><br><span class="line">    int sum;&#x2F;&#x2F;分数</span><br><span class="line">&#125;stu[N];</span><br><span class="line">bool cmp(const ks &amp;a,const ks &amp;b)</span><br><span class="line">&#123;</span><br><span class="line">    if(a.sum&#x3D;&#x3D;b.sum)</span><br><span class="line">        return strcmp(a.name,b.name)&lt;0?1:0;&#x2F;&#x2F;比较考生号</span><br><span class="line">    else</span><br><span class="line">        return a.sum&gt;b.sum;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int stu_num,text_num,line,a,cnt;&#x2F;&#x2F;stu_num考生人数，text_num考题数</span><br><span class="line">    while(cin&gt;&gt;stu_num&amp;&amp;stu_num)</span><br><span class="line">    &#123;</span><br><span class="line">        cnt&#x3D;0;</span><br><span class="line">        int j;</span><br><span class="line">        cin&gt;&gt;text_num&gt;&gt;line;</span><br><span class="line">        for(j&#x3D;1;j&lt;&#x3D;text_num;j++)</span><br><span class="line">            cin&gt;&gt;que[j];</span><br><span class="line">        for(j&#x3D;1;j&lt;&#x3D;stu_num;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            stu[j].sum&#x3D;0;&#x2F;&#x2F;初始化成绩求和</span><br><span class="line">            cin&gt;&gt;stu[j].name&gt;&gt;stu[j].num;</span><br><span class="line">            while(stu[j].num--)</span><br><span class="line">            &#123;</span><br><span class="line">                cin&gt;&gt;a;&#x2F;&#x2F;做对的题号</span><br><span class="line">                stu[j].sum+&#x3D;que[a];&#x2F;&#x2F;求总成绩</span><br><span class="line">            &#125;</span><br><span class="line">            if(stu[j].sum&gt;&#x3D;line)</span><br><span class="line">                cnt++;&#x2F;&#x2F;计算过分数线的人树</span><br><span class="line">        &#125;</span><br><span class="line">        sort(stu+1,stu+1+stu_num,cmp);&#x2F;&#x2F;排序</span><br><span class="line">        cout&lt;&lt;cnt&lt;&lt;endl;</span><br><span class="line">        for(j&#x3D;1;j&lt;&#x3D;stu_num;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(stu[j].sum&gt;&#x3D;line)</span><br><span class="line">                cout&lt;&lt;stu[j].name&lt;&lt;&quot; &quot;&lt;&lt;stu[j].sum&lt;&lt;endl;</span><br><span class="line">            else</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
     </div>
 
     
@@ -274,18 +271,8 @@
     
 
     <footer class="post-footer">
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-            </div>
-            <div class="post-nav-item">
-                <a href="/2021/03/27/ICPC%EF%BC%886%EF%BC%89A%20-%20Doubles/" rel="next" title="ICPC（6）A - Doubles">
-                  ICPC（6）A - Doubles <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
+        <div class="post-eof"></div>
+      
     </footer>
   </article>
 </div>
@@ -293,7 +280,9 @@
 
 
 
-
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 
 <script>
