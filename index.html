@@ -171,7 +171,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -202,6 +202,104 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://ad0814.github.io/2021/08/06/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mr.shen">
+      <meta itemprop="description" content="等一场秋风再起，花开如绎">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AD.钙奶">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/06/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">树状数组</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-06 18:03:56 / 修改时间：18:24:52" itemprop="dateCreated datePublished" datetime="2021-08-06T18:03:56+08:00">2021-08-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="树状数组"><a href="#树状数组" class="headerlink" title="树状数组"></a>树状数组</h2><p><img src="/2021/08/06/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/image-20210419203504223.png" alt="image-20210419203504223"></p>
+<h3 id="lowbit"><a href="#lowbit" class="headerlink" title="lowbit"></a>lowbit</h3><p>lowbit（）函数用来取一个二进制最低位的一与后边的0组成的数</p>
+<p>例：5（101），lowbit（5）=1（1）</p>
+<p>​    12（1100），lowbit（12）=4（100）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> t&amp;(-t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原理，二进制数的负数是正数取反加一</p>
+<p>12（1100），-12（0100）</p>
+<h3 id="求逆序数对"><a href="#求逆序数对" class="headerlink" title="求逆序数对"></a>求逆序数对</h3><p>基本思想:开一个数组c[n+1],初始化为0，记录前面数据的出现情况;当数据a出现时，就令c[a]=1。这样的话，若求a的逆序数，只需要算出在当前状态下c[a+1,n]中有多少个1，因为这些位置的数在a之前出现且比a大。==复杂度O(n^2)==</p>
+<h3 id="树状数组的经典应用"><a href="#树状数组的经典应用" class="headerlink" title="树状数组的经典应用"></a>树状数组的经典应用</h3><p>另开一个==树状数组d[n+1]==,初始化为0，d[i]记录i结点所==管辖范围内==当前状态有多少个数;<br>当添加数据a时，就向上更新d数组,这样，当求a的逆序数时，只需要算sum(n)-sum(a)即可;</p>
+<h3 id="“区间修改-单点查询”的树状数组"><a href="#“区间修改-单点查询”的树状数组" class="headerlink" title="“区间修改+单点查询”的树状数组"></a>“区间修改+单点查询”的树状数组</h3><p>基本思想：通过“差分”的方法（数组中记录的是每个元素与前一个元素的差），把问题转化为常规树状数组！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">若原数组为a[i],设数组d[i]=a[i]-a[i<span class="number">-1</span>](a[<span class="number">0</span>]=<span class="number">0</span>),则可以通过求d[i]的前缀和实现单点查询a[i]。</span><br></pre></td></tr></table></figure>
+
+<p><strong>区间修改</strong></p>
+<p>当给区间[1,r]加上x的时候，a[1]与前一个元素a[l-1]的差增加了x，a[r+1]与a[r]的差减少了x。根据d[i]数组的定义，只需给d[l]加上x，给d[r+1]减去x即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//单点更新“差分”，为区间修改做准备(c是树状数组)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(p&lt;=n)</span><br><span class="line">	c[p]+=x,p+=p&amp;-p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//区间修改（通过两个端点的更新，实现区间修改的目的）</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">range_add</span><span class="params">(<span class="keyword">int</span> r,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	add(l,x),add(r+<span class="number">1</span>,-x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//单点查询（因为差分，所以单点值即前缀和）</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(p)</span><br><span class="line">	res+=c[p],p-=p&amp;-p;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="“区间修改-区间查询”的树状数组"><a href="#“区间修改-区间查询”的树状数组" class="headerlink" title="“区间修改+区间查询”的树状数组"></a>“区间修改+区间查询”的树状数组</h3><p><img src="/2021/08/06/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/image-20210425202209068.png" alt="image-20210425202209068"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//维护2个树状数组</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=p;i&lt;=n;i+=i&amp;-i)</span><br><span class="line">	c1[i]+=x,c2[i]+=x*p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//区间修改（通过两个端点的更新，实现区间修改的目的）</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">range_add</span><span class="params">(<span class="keyword">int</span> r,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	add(l,x),add(r+<span class="number">1</span>,-x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">range_ask</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ask(r)-ask(l<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="B-Minimum-Inversion-Number"><a href="#B-Minimum-Inversion-Number" class="headerlink" title="B - Minimum Inversion Number"></a>B - Minimum Inversion Number</h2><iframe src="https://vjudge.net/problem/description/8259?1628090007000" width="100%" height="900px" frameborder="0" scrolling="no" style="box-sizing: inherit; height: 1047.33px;"></iframe>
+
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>首先是怎么求其中一个序列的逆序数对</p>
+<p>假设序列开始一个数都没有</p>
+<p>每添加一个数之前计算序列有多少数大于该数（即在该位添加时会增加多少对逆序数）&lt;===算作一个状态</p>
+<p>将所有状态相加即是该序列的逆序数对数量</p>
+<p>拿样例来说</p>
+<p><img src="/2021/08/06/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/1420125-20180612005743926-1927608934.png" alt="img"></p>
+<p>当a0移动到an-1末尾后减少了它之后能与它形成逆序数对的个数(比它小的数)</p>
+<p>​                        增加了在末尾时它之前能与它形成逆序数对的个数(比它大的数)</p>
+<p>由于下一个循环数列必定是将头移至尾，所以减少的个数为比它小的个数，增加的个数为比它大的个数</p>
+<p>因为数是不会重复的且为0~n-1共n个，所以 a[i] - 1就是序列中比它小的数的个数，n - a[i]就是序列中比它大的数的个数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> tree[<span class="number">6000</span>],a[<span class="number">6000</span>];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> t&amp;(-t);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> d)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(x&lt;=n) &#123;</span><br><span class="line">        tree[x]+=d;</span><br><span class="line">        x+=lowbit(x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(x&gt;<span class="number">0</span>) &#123;</span><br><span class="line">        ans+=tree[x];</span><br><span class="line">        x-=lowbit(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n) &#123;</span><br><span class="line">        <span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">        <span class="built_in">memset</span>(tree,<span class="number">0</span>,<span class="keyword">sizeof</span>(tree));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">            a[i]++;<span class="comment">//树状数组从1开始 数据范围(0~n-1)</span></span><br><span class="line">            cnt+=sum(n)-sum(a[i]);<span class="comment">//找出所有比a[i]大的数的逆序数对数</span></span><br><span class="line">            add(a[i],<span class="number">1</span>);<span class="comment">//记录这个数</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> ans = cnt;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">            cnt = cnt - a[i] + n - a[i] + <span class="number">1</span>;<span class="comment">//比较完后因为 n 个数范围(0~n-1)且不重复， 所以比a[i] 小的数为a[i]-1;</span></span><br><span class="line">             <span class="comment">// 每次将头元素移至末尾都会减少比头小的数(a[i] - 1)个逆序数，增加比头大的数(n - a[i])个逆序数</span></span><br><span class="line">             <span class="comment">// 所以增加的逆序数为 n - a[i] * 2 + 1  [+(n - a[i]) -(a[i] - 1)]</span></span><br><span class="line">            ans = min(ans,cnt);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -950,227 +1048,6 @@
 </ol>
 <h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n, k, a[<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    a[<span class="number">0</span>] = a[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line">        a[x%<span class="number">2</span>]++;<span class="comment">//输入的人数只需要他的奇偶性，所以用0，1来区分奇偶数</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> winner;</span><br><span class="line">    <span class="keyword">int</span> step = n-k;</span><br><span class="line">    <span class="keyword">if</span>(step==<span class="number">0</span>)<span class="comment">//n和k一样时，只需要判断奇数城市的个数</span></span><br><span class="line">        winner = a[<span class="number">1</span>]%<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(step/<span class="number">2</span>&gt;=a[<span class="number">1</span>])<span class="comment">//后手把奇数城全摧毁</span></span><br><span class="line">        winner=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(step/<span class="number">2</span>&lt;a[<span class="number">0</span>]) winner = step%<span class="number">2</span>;<span class="comment">//判断后手的最后一步是否可以把偶数全摧毁</span></span><br><span class="line">        <span class="keyword">else</span> winner = k%<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(winner)</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Stannis&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Daenerys&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://ad0814.github.io/2021/04/21/vector%E5%9C%A8%E7%AB%9E%E8%B5%9B%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Mr.shen">
-      <meta itemprop="description" content="等一场秋风再起，花开如绎">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AD.钙奶">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/21/vector%E5%9C%A8%E7%AB%9E%E8%B5%9B%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" class="post-title-link" itemprop="url">vector在竞赛中的应用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-04-21 19:47:04 / 修改时间：19:47:51" itemprop="dateCreated datePublished" datetime="2021-04-21T19:47:04+08:00">2021-04-21</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="vector在竞赛中的应用"><a href="#vector在竞赛中的应用" class="headerlink" title="vector在竞赛中的应用"></a>vector在竞赛中的应用</h1><h2 id="优先队列（priority-queue"><a href="#优先队列（priority-queue" class="headerlink" title="优先队列（priority_queue)"></a>优先队列（priority_queue)</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
-<li>在队尾删除元素</li>
-<li>在队头添加元素</li>
-<li>每次取出的是具有最高优先权的元素（不一定先进先出）</li>
-<li>访问最优元素：队列名.top</li>
-</ul>
-<h2 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h2><p>先进后出</p>
-<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><p>栈顶删除/加入</p>
-<ul>
-<li>创建栈对象：stack&lt;元素类型&gt; 栈名；</li>
-<li>栈顶==添加==元素：栈名.push(元素名)；</li>
-<li>==删除==栈顶元素：栈名.pop();</li>
-<li>==访问==栈顶元素：栈名.top();</li>
-<li>判断是否为空：栈名.empty();</li>
-<li>返回栈的大小：栈名.size();</li>
-</ul>
-<p>栈和队列一样，没有clear之类的清空函数，只能循环调用==出栈函数==</p>
-<h2 id="vector的应用"><a href="#vector的应用" class="headerlink" title="vector的应用"></a>vector的应用</h2><p>vector(向量，==动态数组==)</p>
-<p>1.向量的定义：vector&lt; int &gt; a;</p>
-<p>2.向量初始化</p>
-<p>vector&lt; int &gt; abc;//初始化一个size为0的vector</p>
-<p>//初始化size，但每个元素为0</p>
-<p>vector&lt; int &gt; abc(10);//初始化了10个默认值为0的元素</p>
-<p>//初始化size，并设置初始值</p>
-<p>vector&lt; int &gt; cde(10,1);//初始化10个为1的元素</p>
-<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><ul>
-<li><p>取向量==首元素的迭代器==：向量名.begin();</p>
-</li>
-<li><p>取向量==尾元素下一地址==:向量名.end ();</p>
-</li>
-<li><p>取向量==首元素的值==:向量名.front ();</p>
-</li>
-<li><p>取向量==尾元素的值==:向量名.back() ;</p>
-</li>
-<li><p>==下标==形式访问:int value0 =向量名[0];//类似普通数组的访问</p>
-</li>
-<li><p>往==尾部添加==一个元素:向量名.==push_back(value)==;//最常见操作</p>
-</li>
-<li><p>==删除尾部==第一个元素:向量名.pop_back() ;</p>
-</li>
-<li><p>判向量==是否为空==:向量名.empty();</p>
-</li>
-<li><p>求向量==元素个数==:向量名.size();//实际元素个数，不是容量</p>
-</li>
-<li><p>==翻转==向量: reverse(a.begin() , a.end () );</p>
-</li>
-</ul>
-<h2 id="STL中vector的经典应用-邻链表"><a href="#STL中vector的经典应用-邻链表" class="headerlink" title="STL中vector的经典应用-==邻链表=="></a>STL中vector的经典应用-==邻链表==</h2><p>struct edge{int form,to,value;}//定义边</p>
-<p>const int maxn =1e5+5;</p>
-<p>vector&lt; edge &gt; Map[maxn];//一维向量相当于二维数组</p>
-<p>若用普通二维数组存邻链表，需要1e10的空间开销，而如果图中实际变数只有1e6，无疑会造成空间浪费（超内存）。</p>
-<h2 id="set集合"><a href="#set集合" class="headerlink" title="set集合"></a>set集合</h2><p>set含义就是集合，他是一个==有序==的容器，里面的元素都是==排序好==的，支持插入，删除，查找等操作，所有的操作都是严格在log^n</p>
-<p>时间内完成，效率高。</p>
-<ul>
-<li><p>set的声明：    set&lt; int &gt;   s;</p>
-</li>
-<li><p>set的清空：    s.clear();</p>
-</li>
-<li><p>插入一个元素x：   s.insert();</p>
-<p>//==如果集合中之前没有，则插入成功并自动排序，否则不插入==</p>
-</li>
-<li><p>查询是否有元素x： int hav=s.count(x);//返回0或1</p>
-</li>
-<li><p>查找x并返回迭代器：set&lt; int &gt;::iterator it=s.find(x);</p>
-</li>
-<li><p>判断是否为空集   bool isempty=s.empty();</p>
-</li>
-<li><p>求集合元素个数:int n=s.size();</p>
-</li>
-<li><p>删除元素x:s.erase(x);</p>
-</li>
-</ul>
-<h3 id="set的基本用法"><a href="#set的基本用法" class="headerlink" title="set的基本用法"></a>set的基本用法</h3><p>set的主要用途：自动==去重==并按==升序==排序</p>
-<p>set只能通过迭代器（iterator）访问</p>
-<h2 id="string类"><a href="#string类" class="headerlink" title="string类"></a>string类</h2><h3 id="一、string对象声明"><a href="#一、string对象声明" class="headerlink" title="一、string对象声明"></a>一、string对象声明</h3><ul>
-<li>string str;</li>
-<li>string str1=”wjdnkk”;</li>
-</ul>
-<h3 id="二、求string对象长度"><a href="#二、求string对象长度" class="headerlink" title="二、求string对象长度"></a>二、求string对象长度</h3><ul>
-<li>string strTest=”test”;</li>
-<li>strTest.length();//返回4</li>
-<li>strTest.size();//返回4</li>
-</ul>
-<h3 id="三、string对象的链接"><a href="#三、string对象的链接" class="headerlink" title="三、string对象的链接"></a>三、string对象的链接</h3><p>可以使用+和+=运算符对string对象执行字符串连接操作，（还有append成员函数实现字符串的连接）</p>
-<h3 id="四、string对象的比较"><a href="#四、string对象的比较" class="headerlink" title="四、string对象的比较"></a>四、string对象的比较</h3><p>可以用&lt;,&lt;=,==,!=,&gt;=,&gt;运算符比较string对象，（患有compare成员函数用于比较字符串）</p>
-<h3 id="五、求string对象的子串"><a href="#五、求string对象的子串" class="headerlink" title="五、求string对象的子串"></a>五、求string对象的子串</h3><p>substr成员函数可以用于求字串（n,m)；</p>
-<p>调用时，如果省略m或m超过字符串长度，则求出来的字串就是从下标n开始一直到字符串结束的部分</p>
-<ul>
-<li>string s1=”this is ok”;</li>
-<li>string s2=s1.substr(2,4);//s2=”is i”下标为2取4个</li>
-<li>s2=s1.substr(2);//s2=”is is ok”从2到最后</li>
-</ul>
-<h3 id="六、插入字符串"><a href="#六、插入字符串" class="headerlink" title="六、插入字符串"></a>六、插入字符串</h3><p>insert成员函数可以在string对象中插入另一个字符串，返回值为对象自身的引用。</p>
-<ul>
-<li>string s1(“Limitless”),s2(“00”);</li>
-<li>s1.insert(2,”123”);            //s1=”Lil23mitless”</li>
-<li>s1.insert(3.s2);                 //s1=”Lil0023mitless”</li>
-<li>s1.insert(3,5,’X’);              //s1=”LilXXXXX0023mitless”</li>
-</ul>
-<h3 id="七、删除字串"><a href="#七、删除字串" class="headerlink" title="七、删除字串"></a>七、删除字串</h3><p>erase成员函数可以删除string对象中的子串，返回值为对象自身的引用。</p>
-<ul>
-<li><p>string s1(“Real Steel”);</p>
-</li>
-<li><p>s1.erase(1,3);         //s1=”R Steel”</p>
-</li>
-<li><p>s1.erase(5);            //s1=”R Ste”</p>
-</li>
-</ul>
-<h3 id="八、交换两个string对象的内容"><a href="#八、交换两个string对象的内容" class="headerlink" title="八、交换两个string对象的内容"></a>八、交换两个string对象的内容</h3><p>swap成员函数可以交换两个string对象的内容；</p>
-<ul>
-<li>string s1(“West”),s2(“East”);</li>
-<li>s1.swap(s2);</li>
-</ul>
-<h3 id="九、字符串的查找操作："><a href="#九、字符串的查找操作：" class="headerlink" title="九、字符串的查找操作："></a>九、字符串的查找操作：</h3><ul>
-<li>string str=”The apple thinks apple is delicious”;//长度34</li>
-<li>string key=”apple”;</li>
-<li>int pos1=str.find(key);//4</li>
-<li>int pos2=str.find(key,10);//17</li>
-</ul>
-<p>==//s.find(str)  查找字符串str在当前字符串s中第一次出现的位置==</p>
-<p>==//s.find(str，pos)  查找字符串str在当前字符串s的[pos,end]中第一次出现的位置==</p>
-<h3 id="十、用STL算法操作string对象"><a href="#十、用STL算法操作string对象" class="headerlink" title="十、用STL算法操作string对象"></a>十、用STL算法操作string对象</h3><ul>
-<li>string s(“afgcbed”);</li>
-<li>sort(s.began(),s.end());</li>
-<li>cout&lt;&lt;s&lt;&lt;endl;          //输出abcdefg</li>
-<li>==next_permutation==(s.began(),s.end());求下一个字符串</li>
-<li>cout&lt;&lt;s&lt;&lt;endl;         //输出abcdegf</li>
-<li>reverse(s.began(),s.end());//翻转字符串</li>
-<li>cout&lt;&lt;s&lt;&lt;endl;//</li>
-</ul>
-<h2 id="STL中的-迭代器"><a href="#STL中的-迭代器" class="headerlink" title="STL中的==迭代器=="></a>STL中的==迭代器==</h2><ul>
-<li>迭代器：遍历容器中数据的对象。对储存于容器中的数据进行处理时，迭代器能==按预先定义的顺序==从一个成员移向另一个成员。</li>
-<li>==通过迭代器可以在不了解容器内部原理的情况下遍历容器==</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ivec;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator iter;</span><br><span class="line">    ivec.push_back(<span class="number">4</span>);</span><br><span class="line">    ivec.push_back(<span class="number">3</span>);</span><br><span class="line">    ivec.push_back(<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">for</span>(iter=ivec.begin();iter!=ivec.end();iter++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;*iter&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="STL–map-映射"><a href="#STL–map-映射" class="headerlink" title="STL–map(映射)"></a>STL–map(映射)</h2><ul>
-<li>map是一个键值对（key/value)容器，对于迭代器来说可以修改value，而不能修改key。==Map会根据key自动排序==</li>
-<li></li>
-</ul>
-<p>map类型通常可以理解为关联数组：可使用==键作为下标==来获取一个值。关联的本质在于：元素的值与某个特定的键相关联，而并非通过元素在数组中的位置来获取。</p>
-<h3 id="map的基本用法"><a href="#map的基本用法" class="headerlink" title="map的基本用法"></a>map的基本用法</h3><ul>
-<li>map&lt;int,string&gt; m;//定义一个空map m;</li>
-<li>m.count(k);//返回m中键值等于k的元素的个数</li>
-<li>m.find(k);//存在则返回指向该元素的迭代器，否则返回结束地址end（）；</li>
-<li>m.erase(k);//删除m中==键为k==的元素，但会删除元素的个数（1或0）</li>
-<li>m.erase(p);//从m中删除==迭代器p==所指向的元素</li>
-<li>m.insert(e);//e是一个用在m上的value_type类型的值（一个pair）</li>
-</ul>
-<h2 id="next-permutation"><a href="#next-permutation" class="headerlink" title="next_permutation"></a>next_permutation</h2><ul>
-<li>==next_permutation通常用于生成序列的全排列==</li>
-<li>int a[]={1,2,3};</li>
-<li>do{</li>
-<li>cout&lt;&lt;a[0]&lt;&lt;” “&lt;&lt;a[1]&lt;&lt;” “&lt;&lt;a[2]&lt;&lt;endl;</li>
-<li>}while(next_permutation(a,a+3));</li>
-<li>若当前调用已经到达最大字典序，比如321，则返回函数false</li>
-</ul>
 
       
     </div>
